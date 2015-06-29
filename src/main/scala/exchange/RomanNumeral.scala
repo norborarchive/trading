@@ -7,21 +7,19 @@ case class RomanNumeral() {
     validateRepeatedMorethanThreeException(romanText)
 
     val symbols = toSymbols(romanText).toList
-
-    var i = 0
-    var total = 0
-    for (i <- 0 until symbols.size) {
+    val indexs = List.range(0, symbols.size)
+    val total = indexs.foldLeft(0)((total, i) => {
       val left = symbols(i)
-      val right:Option[Symbol.Value] = if (i < symbols.size - 1) Some(symbols(i + 1)) else None
+      val right: Option[Symbol.Value] = if (i < symbols.size - 1) Some(symbols(i + 1)) else None
 
       (right.isEmpty || left.id >= right.get.id) match {
-        case true => total += left.id
+        case true => total + left.id
         case false => {
           validateSubtractException(left, right.get)
-          total -= left.id
+          total - left.id
         }
       }
-    }
+    })
 
     return total
   }
