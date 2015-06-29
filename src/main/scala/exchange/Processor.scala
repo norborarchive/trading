@@ -19,7 +19,7 @@ case class Processor() {
    * @param sentence
    * @return (Item, Credits)
    */
-  def doItemIsCredits(sentence: String): (String, Double) = {
+  def doItemsIsCredits(sentence: String): (String, Double) = {
     val lists = sentence.split(" is ")
 
     val buffer = lists(0).split(" ")

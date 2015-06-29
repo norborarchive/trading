@@ -1,3 +1,4 @@
+// scalastyle:off
 package exchange
 
 object Symbol extends Enumeration {
@@ -12,3 +13,4 @@ object Symbol extends Enumeration {
   val M = Value(1000)
 
 }
+// scalastyle:off

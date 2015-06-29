@@ -12,12 +12,12 @@ case class RomanNumeral() {
     var total = 0
     for (i <- 0 until symbols.size) {
       val left = symbols(i)
-      val right = if (i < symbols.size-1) symbols(i+1) else null
+      val right:Option[Symbol.Value] = if (i < symbols.size - 1) Some(symbols(i + 1)) else None
 
-      (right == null || left.id >= right.id) match {
+      (right.isEmpty || left.id >= right.get.id) match {
         case true => total += left.id
         case false => {
-          validateSubtractException(left, right)
+          validateSubtractException(left, right.get)
           total -= left.id
         }
       }
@@ -32,17 +32,17 @@ case class RomanNumeral() {
 
   private def validateCannotRepeatedException(romanText: String): Unit = {
     if (romanText.contains("VV") ||
-        romanText.contains("LL") ||
-        romanText.contains("DD")) {
+      romanText.contains("LL") ||
+      romanText.contains("DD")) {
       throw new IllegalArgumentException("V, L and D can never be repeated.");
     }
   }
 
   private def validateRepeatedMorethanThreeException(romanText: String): Unit = {
     if (romanText.contains("IIII") ||
-        romanText.contains("XXXX") ||
-        romanText.contains("CCCC") ||
-        romanText.contains("MMMM")) {
+      romanText.contains("XXXX") ||
+      romanText.contains("CCCC") ||
+      romanText.contains("MMMM")) {
       throw new IllegalArgumentException("I, X, C and M can not repeated more than three.");
     }
   }

@@ -18,7 +18,7 @@ class ProcessorSpec() extends FlatSpec with Matchers {
   }
 
   "glob glob Silver is 34 Credits" should "return (Silver, 17)" in {
-    processor.doItemIsCredits("glob glob Silver is 34 Credits") should be(("Silver", 17))
+    processor.doItemsIsCredits("glob glob Silver is 34 Credits") should be(("Silver", 17))
   }
 
   "how much is pish tegj glob glob ?" should "return (pish tegj glob glob, 42)" in {

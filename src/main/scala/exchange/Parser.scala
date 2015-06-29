@@ -1,13 +1,14 @@
 package exchange
 
-case class Parser() {
 
-  def isXxxIsSymbol(sentence: String): Boolean = sentence.matches("""^(.+)\s+is\s+[IVXLCDM]?""")
+object Parser {
 
-  def isItemIsCredits(sentence: String): Boolean = sentence.matches("""^(.+)\s+is\s+(.+)\s+Credits?""")
+  val reXxxIsSymbol = """^(.+)\s+is\s+[IVXLCDM]$""".r
 
-  def isHowMuchIs(sentence: String): Boolean = sentence.matches("""^how\s+much\s+is\s+(.+)?""")
+  val reItemsIsCredits = """^(.+)\s+is\s+(.+)\s+Credits$""".r
 
-  def isHowManyCreditsIs(sentence: String): Boolean = sentence.matches("""^how\s+many\s+Credits\s+is\s+(.+)?""")
+  val reHowMuchIs = """^how\s+much\s+is\s+(.+)$""".r
+
+  val reHowManyCreditsIs = """^how\s+many\s+Credits\s+is\s+(.+)$""".r
 
 }
