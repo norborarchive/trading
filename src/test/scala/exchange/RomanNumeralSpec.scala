@@ -1,7 +1,6 @@
 import exchange.RomanNumeral
 import org.scalatest.{FlatSpec, Matchers}
 
-
 class RomanNumeralSpec extends FlatSpec with Matchers {
 
   val roman = RomanNumeral()
@@ -59,21 +58,20 @@ class RomanNumeralSpec extends FlatSpec with Matchers {
   }
 
   "VV" should "throw IllegalArgumentException" in {
-    evaluating {
+    intercept[AssertionError] {
       roman.valueOf("VV")
-    } should produce[IllegalArgumentException]
+    }
   }
 
   "CCCC" should "throw IllegalArgumentException" in {
-    evaluating {
+    intercept[AssertionError] {
       roman.valueOf("CCCC")
-    } should produce[IllegalArgumentException]
+    }
   }
 
   "MMIM" should "throw IllegalArgumentException" in {
-    evaluating {
+    intercept[AssertionError] {
       roman.valueOf("MMIM")
-    } should produce [IllegalArgumentException]
+    }
   }
-
 }
